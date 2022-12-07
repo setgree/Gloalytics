@@ -8,7 +8,7 @@ rm(list = ls()) # contra Jenny Bryan I like a clean slate
 current_T_bill_rate <-	0.0427
 historical_T_bill_rate <-	0.0337
 expected_reserve_yield <-	0.03
-cost_per_month_of_basic_income = 40
+cost_per_month_of_basic_income <- 40
 months_in_year <- 12
 expected_basic_income_period <-	3
 cost_per_year_of_basic_income <- 480
@@ -31,9 +31,6 @@ glo_crossover_point <- (seed_as_donation + 1) *
 
 # if we take a more conservative estimate of yield? 
 glo_crossover_point * (expected_reserve_yield / .025) # 26,688,000
-
-# how much Glo to provide basic income to 1 million people?
-1000000 * glo_to_provide_one_basic_income #16,000,000,000
 
 # how much Glo to double GiveDirectly's 2021 funding?
 # per https://www.givedirectly.org/wp-content/uploads/2022/11/GiveDirectly-2021-12-Tax-Form-990-Public-Disclosure.pdf, 
