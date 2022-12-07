@@ -1,9 +1,10 @@
-#! # Glo impact at different scales
+#' # Glo impact at different scales
 
 # settings
 options(scipen = 99)
+rm(list = ls()) # contra Jenny Bryan I like a clean slate
 
-#! ### parameters
+#' ### parameters
 current_T_bill_rate <-	0.0427
 historical_T_bill_rate <-	0.0337
 expected_reserve_yield <-	0.03
@@ -13,8 +14,7 @@ expected_basic_income_period <-	3
 cost_per_year_of_basic_income <- 480
 initial_seed_funding <- 2000000
 
-
-#! ### calculations
+#' ### calculations
 
 # how much Glo does it take to provide one year's worth of basic income?
 glo_to_provide_one_basic_income <- cost_per_month_of_basic_income *
@@ -46,5 +46,14 @@ GD_doubling_point <- GD_funding / expected_reserve_yield # 8,307,566,800
 # how many basic incomes is that
 GD_doubling_point / glo_to_provide_one_basic_income #519,223
 
-# If we start with 1M and double every month, how many months to these goals?
+# If we start with 1M and grow by 10% every month;
+# how many months to these goals?
+glo_growth <- function(start, end, growth_rate) {
+  appreciation_rate = 1 + growth_rate
+  periods = (log(end) - log(start)) / log(appreciation_rate)
+  print(round(periods, 3))
+    }
 
+glo_growth(1000000, GD_doubling_point, .1) #94.69
+# so at 10% growth per month and a starting point of 1M, we'd double
+# GiveDirectly's revenue in 7.83 years -- or in Q3 2030 
