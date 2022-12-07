@@ -1,6 +1,8 @@
 #! # Glo impact at different scales
 
+# settings
 options(scipen = 99)
+
 #! ### parameters
 current_T_bill_rate <-	0.0427
 historical_T_bill_rate <-	0.0337
@@ -16,18 +18,33 @@ initial_seed_funding <- 2000000
 
 # how much Glo does it take to provide one year's worth of basic income?
 glo_to_provide_one_basic_income <- cost_per_month_of_basic_income *
-  months_in_year / expected_reserve_yield
+  months_in_year / expected_reserve_yield #16,000
 
 # basic income from seed funding if direct donation?
-(seed_as_donation = ceiling(initial_seed_funding / 
+seed_as_donation = ceiling(initial_seed_funding / 
   (cost_per_month_of_basic_income * months_in_year *
-     expected_basic_income_period)))
+     expected_basic_income_period)) #1389
 
 # how much Glo in circulation to exceed that?
-(glo_crossover_point <- (seed_as_donation + 1) * glo_to_provide_one_basic_income)  
+glo_crossover_point <- (seed_as_donation + 1) * 
+  glo_to_provide_one_basic_income  # 22,240,000 -- for at least 3 years
 
 # if we take a more conservative estimate of yield? 
-glo_crossover_point * (expected_reserve_yield / .025)
+glo_crossover_point * (expected_reserve_yield / .025) # 26,688,000
 
 # how much Glo to provide basic income to 1 million people?
-1000000 * glo_to_provide_one_basic_income
+1000000 * glo_to_provide_one_basic_income #16,000,000,000
+
+# how much Glo to double GiveDirectly's 2021 funding?
+# per https://www.givedirectly.org/wp-content/uploads/2022/11/GiveDirectly-2021-12-Tax-Form-990-Public-Disclosure.pdf, 
+# they got 249,227,004 in total in 2021
+GD_funding <- 249227004
+GD_doubling_point <- GD_funding / expected_reserve_yield # 8,307,566,800
+
+# 8.3B would make Glo the 4th largest stablecoin -- 43% bigger than Dai
+# but just 37% as big as the next leading contender (Binance)
+# how many basic incomes is that
+GD_doubling_point / glo_to_provide_one_basic_income #519,223
+
+# If we start with 1M and double every month, how many months to these goals?
+
