@@ -46,6 +46,8 @@ GD_doubling_point / glo_to_provide_one_basic_income #519,223
 # If we start with 1M and grow by 10% every month;
 # how many months to these goals?
 glo_growth <- function(start, end, growth_rate) {
+  # X0 * (1+r)^T = Y0
+  # So T*log(1+r) = log(Y0) - log(X0)
   appreciation_rate = 1 + growth_rate
   periods = (log(end) - log(start)) / log(appreciation_rate)
   print(round(periods, 3))
