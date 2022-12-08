@@ -56,3 +56,7 @@ glo_growth <- function(start, end, growth_rate) {
 glo_growth(1000000, GD_doubling_point, .1) #94.69
 # so at 10% growth per month and a starting point of 1M, we'd double
 # GiveDirectly's revenue in 7.83 years -- or in Q3 2030 
+
+# What if we start with just 10K but assume 10% growth every week?
+glo_growth(10000, GD_doubling_point, .1)
+# 143 weeks, so about 2 years and 8 months
